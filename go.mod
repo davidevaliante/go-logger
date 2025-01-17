@@ -1,4 +1,4 @@
-module github.com/davidevaliante/logger
+module github.com/davidevaliante/go-logger
 
 go 1.23.4
 
