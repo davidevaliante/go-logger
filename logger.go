@@ -28,7 +28,13 @@ func New(env string, opts *Options) *Logger {
 }
 
 func createProductionLogger(opts *Options) *Logger {
-	fileWriteSyncer := zapcore.AddSync(opts)
+	var fileWriteSyncer zapcore.WriteSyncer
+	if opts == nil {
+		fileWriteSyncer = zapcore.AddSync(DefaultOptions)
+	} else {
+		fileWriteSyncer = zapcore.AddSync(opts)
+	}
+
 	jsonEncoder := zapcore.NewJSONEncoder(DefaultEncoderConfig())
 
 	core := zapcore.NewCore(jsonEncoder, fileWriteSyncer, zap.InfoLevel)
