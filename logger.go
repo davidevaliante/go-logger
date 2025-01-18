@@ -20,7 +20,7 @@ var DefaultOptions = &Options{
 }
 
 func New(env string, opts *Options) *Logger {
-	println("this is a new logger")
+	println("this is a new logger updated")
 	if env == "production" {
 		return createProductionLogger(opts)
 	} else {
