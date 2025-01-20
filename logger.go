@@ -3,6 +3,7 @@ package logger
 import (
 	"os"
 
+	"github.com/davidevaliante/constants"
 	"github.com/natefinch/lumberjack"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -19,9 +20,8 @@ var DefaultOptions = &Options{
 	Compress:   true,
 }
 
-func New(env string, opts *Options) *Logger {
-	println("this is a new logger updated")
-	if env == "production" {
+func New(env constants.Env, opts *Options) *Logger {
+	if env == constants.Development || env == constants.Local {
 		return createProductionLogger(opts)
 	} else {
 		return createDevelopmentLogger(opts)
