@@ -22,9 +22,9 @@ var DefaultOptions = &Options{
 
 func New(e env.Env, opts *Options) *Logger {
 	if e == env.Development || e == env.Local {
-		return createProductionLogger(opts)
-	} else {
 		return createDevelopmentLogger(opts)
+	} else {
+		return createProductionLogger(opts)
 	}
 }
 
