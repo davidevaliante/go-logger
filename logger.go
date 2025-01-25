@@ -49,7 +49,7 @@ func createDevelopmentLogger(opts *Options) *Logger {
 	jsonEncoder := zapcore.NewJSONEncoder(DefaultEncoderConfig())
 
 	fileCore := createProductionLogger(opts)
-	consoleCore := zapcore.NewCore(jsonEncoder, consoleWriteSyncer, zap.InfoLevel)
+	consoleCore := zapcore.NewCore(jsonEncoder, consoleWriteSyncer, zap.DebugLevel)
 
 	core := zapcore.NewTee(fileCore.Core(), consoleCore)
 	logger := zap.New(core)
